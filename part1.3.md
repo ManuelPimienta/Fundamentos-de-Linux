@@ -115,6 +115,57 @@ $ ./myprog ~fred/fredsfile.txt
 
 ## Usando comandos de Linux
 
+### Introduciendo ls
+
+Ahora, echaremos un vistazo al comando ls. Es muy probable que ya esté familiarizado con ls y sabe que al escribirlo por sí mismo se lista el contenido del directorio de trabajo actual:
+
+$ cd /usr
+$ ls
+X11R6      doc         i686-pc-linux-gnu  lib      man          sbin   ssl
+bin        gentoo-x86  include            libexec  portage      share  tmp
+distfiles  i686-linux  info               local    portage.old  src
+
+Al especificar la opción -a, puede ver todos los archivos de un directorio, incluidos los archivos ocultos: los que comienzan con (.). Como se puede ver en el ejemplo siguiente, ls -a revela los archivo . y .. directorio especial de enlaces:
+
+$ ls -a
+.      bin        gentoo-x86         include  libexec  portage      share  tmp
+..     distfiles  i686-linux         info     local    portage.old  src
+X11R6  doc        i686-pc-linux-gnu  lib      man      sbin         ssl
+
+### Listados largos del directorio
+
+También puede especificar uno o más archivos o directorios en la línea de comandos de ls. Si especifica un archivo, ls mostrará ese archivo solamente. Si especifica un directorio, ls mostrará el contenido del directorio. La opción -l resulta muy útil cuando necesita ver los permisos, la propiedad, la hora de modificación y la información de tamaño en su lista de directorios.
+
+En el ejemplo siguiente, usamos la opción -l para mostrar una lista completa de mi directorio /usr.
+
+$ ls -l /usr
+drwxr-xr-x    7 root     root          168 Nov 24 14:02 X11R6
+drwxr-xr-x    2 root     root        14576 Dec 27 08:56 bin
+drwxr-xr-x    2 root     root         8856 Dec 26 12:47 distfiles
+lrwxrwxrwx    1 root     root            9 Dec 22 20:57 doc -> share/doc
+drwxr-xr-x   62 root     root         1856 Dec 27 15:54 gentoo-x86
+drwxr-xr-x    4 root     root          152 Dec 12 23:10 i686-linux
+drwxr-xr-x    4 root     root           96 Nov 24 13:17 i686-pc-linux-gnu
+drwxr-xr-x   54 root     root         5992 Dec 24 22:30 include
+lrwxrwxrwx    1 root     root           10 Dec 22 20:57 info -> share/info
+drwxr-xr-x   28 root     root        13552 Dec 26 00:31 lib
+drwxr-xr-x    3 root     root           72 Nov 25 00:34 libexec
+drwxr-xr-x    8 root     root          240 Dec 22 20:57 local
+lrwxrwxrwx    1 root     root            9 Dec 22 20:57 man -> share/man
+lrwxrwxrwx    1 root     root           11 Dec  8 07:59 portage -> gentoo-x86/
+drwxr-xr-x   60 root     root         1864 Dec  8 07:55 portage.old
+drwxr-xr-x    3 root     root         3096 Dec 22 20:57 sbin
+drwxr-xr-x   46 root     root         1144 Dec 24 15:32 share
+drwxr-xr-x    8 root     root          328 Dec 26 00:07 src
+drwxr-xr-x    6 root     root          176 Nov 24 14:25 ssl
+lrwxrwxrwx    1 root     root           10 Dec 22 20:57 tmp -> ../var/tmp
+
+La primera columna muestra información de permisos para cada elemento del listado. Voy a explicar cómo interpretar esta información más adelante. La siguiente columna muestra el número de enlaces a cada objeto del sistema de archivos, que pasaremos por alto ahora, pero volveremos a ello más tarde. Las columnas tercera y cuarta listan el propietario y el grupo, respectivamente. La quinta columna muestra el tamaño del objeto. La sexta columna es el tiempo de "última modificación" o "mtime" del objeto. La última columna es el nombre del objeto. Si el archivo es un enlace simbólico, verá un apuntador -> y la ruta a la que apunta el enlace simbólico.
+
+
+
+
+
 
 
 
