@@ -1,4 +1,4 @@
-Paths(Rutas)
+## Paths(Rutas)
 
 Para ver el directorio de trabajo actual de bash, puede escribir:
 
@@ -68,10 +68,38 @@ Además, también podemos añadir .. a una ruta relativa existente, lo que nos p
 
 <code>/usr/share</code>
 
+### Ejemplos de ruta relativa
+
+Las rutas relativas pueden ser bastante complejas. Aquí hay algunos ejemplos, todos sin el directorio de destino resultante mostrado. Trate de averiguar dónde terminará después de escribir estos comandos:
+
+$ cd /bin
+$ cd ../usr/share/zoneinfo
 
 
+$ cd /usr/X11R6/bin
+$ cd ../lib/X11
 
 
+$ cd /usr/bin
+$ cd ../bin/../bin
+
+Ahora, probarlos y ver si los tienes bien :)
+
+### Entendiendo el "."
+
+Antes de terminar nuestra cobertura de cd, hay algunas cosas más que necesito mencionar. En primer lugar, hay otro directorio especial llamado., Que significa "el directorio actual". Aunque este directorio no se utiliza con el comando cd, a menudo se utiliza para ejecutar algún programa en el directorio actual, de la siguiente manera:
+
+$ ./myprog
+
+En el ejemplo anterior, se ejecutará el ejecutable myprog residente en el directorio de trabajo actual.
+
+### cd y el directorio de inicio
+
+Si queremos cambiar a nuestro directorio personal, podríamos escribir:
+
+$ cd
+
+Sin argumentos, cd cambiará a su directorio de inicio, que es /root para el superusuario y normalmente /home/nombre de usuario para un usuario normal. Pero ¿qué pasa si queremos especificar un archivo en nuestro directorio personal? Tal vez queramos pasar un argumento de archivo al comando myprog. Si el archivo vive en nuestro directorio personal, podemos escribir:
 
 
 
