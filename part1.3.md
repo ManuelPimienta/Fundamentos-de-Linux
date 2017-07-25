@@ -162,11 +162,42 @@ lrwxrwxrwx    1 root     root           10 Dec 22 20:57 tmp -> ../var/tmp
 
 La primera columna muestra información de permisos para cada elemento del listado. Voy a explicar cómo interpretar esta información más adelante. La siguiente columna muestra el número de enlaces a cada objeto del sistema de archivos, que pasaremos por alto ahora, pero volveremos a ello más tarde. Las columnas tercera y cuarta listan el propietario y el grupo, respectivamente. La quinta columna muestra el tamaño del objeto. La sexta columna es el tiempo de "última modificación" o "mtime" del objeto. La última columna es el nombre del objeto. Si el archivo es un enlace simbólico, verá un apuntador -> y la ruta a la que apunta el enlace simbólico.
 
+### Mirando los directorios
 
+A veces, usted querrá mirar un directorio, en lugar de dentro de él. Para estas situaciones, puede especificar la opción -d, que le dirá a ls que busque en cualquier directorio que normalmente buscaría en su interior:
 
+$ ls -dl /usr /usr/bin /usr/X11R6/bin ../share
+drwxr-xr-x    4 root     root           96 Dec 18 18:17 ../share
+drwxr-xr-x   17 root     root          576 Dec 24 09:03 /usr
+drwxr-xr-x    2 root     root         3192 Dec 26 12:52 /usr/X11R6/bin
+drwxr-xr-x    2 root     root        14576 Dec 27 08:56 /usr/bin
 
+### Listados recursivos e inode
 
+Así que puede usar -d para buscar en un directorio, pero también puede usar -R para hacer lo contrario: no sólo mirar dentro de un directorio, sino recursivamente buscar dentro de todos los archivos y directorios dentro de ese directorio! No incluiremos ningún ejemplo de salida para esta opción (ya que generalmente es voluminosa), pero es posible que desee probar algunos comandos ls -R y ls -Rl para obtener una idea de cómo funciona.
 
+Finalmente, la opción ls -i  se puede usar para mostrar los números de inodo de los objetos del sistema de archivos en el listado:
+
+$ ls -i /usr
+   1409 X11R6        314258 i686-linux           43090 libexec        13394 sbin
+   1417 bin            1513 i686-pc-linux-gnu     5120 local          13408 share
+   8316 distfiles      1517 include                776 man            23779 src
+     43 doc            1386 info                 93892 portage        36737 ssl
+  70744 gentoo-x86     1585 lib                   5132 portage.old      784 tmp
+
+### Comprensión de los inodos
+
+A cada objeto de un sistema de archivos se le asigna un índice único, denominado número de inodo. Esto puede parecer trivial, pero entender los inodes es esencial para entender muchas operaciones del sistema de archivos. Por ejemplo, considere los enlaces . y ..  que aparecen en cada directorio. Para entender completamente lo que realmente es un directorio, primero echaremos un vistazo al número de inodo de /usr/local:
+
+$ ls -id /usr/local
+   5120 /usr/local
+   
+El directorio /usr/local tiene un número de inodo de 5120. Ahora echemos un vistazo al número de inodo de /usr/local/bin/ ..:
+
+$ ls -id /usr/local/bin/..
+   5120 /usr/local/bin/..
+   
+Como puede ver, /usr/local/bin/ tiene el mismo número de inode que /usr/local! Así es como podemos enfrentarnos a esta sorprendente revelación. En el pasado, hemos considerado a / usr / local como el propio directorio. Ahora, descubrimos que el inode 5120 es de hecho el directorio, y hemos encontrado dos entradas de directorio (llamadas "enlaces") que apuntan a este inodo. Ambos /usr/local y /usr/local/bin/.. son enlaces a inode 5120. Aunque inode 5120 sólo existe en un lugar en el disco, varias cosas enlazan a él. Inode 5120 es la entrada real en el disco.
 
 
 
