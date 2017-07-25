@@ -99,7 +99,23 @@ Si queremos cambiar a nuestro directorio personal, podríamos escribir:
 
 $ cd
 
-Sin argumentos, cd cambiará a su directorio de inicio, que es /root para el superusuario y normalmente /home/nombre de usuario para un usuario normal. Pero ¿qué pasa si queremos especificar un archivo en nuestro directorio personal? Tal vez queramos pasar un argumento de archivo al comando myprog. Si el archivo vive en nuestro directorio personal, podemos escribir:
+Sin argumentos, cd cambiará a su directorio de inicio, que es /root para el superusuario y normalmente /home/nombre de usuario para un usuario normal. Pero ¿qué pasa si queremos especificar un archivo en nuestro directorio personal? Tal vez queramos pasar un argumento de archivo al comando myprog. Si el archivo reside en nuestro directorio personal, podemos escribir:
+
+$ ./myprog /home/drobbins/myfile.txt
+
+Sin embargo, usar un camino absoluto como ese no siempre es conveniente. Afortunadamente, podemos usar el carácter ~ (tilde) para hacer lo mismo:
+
+$ ./myprog ~/myfile.txt
+
+### Directorios de inicio de otros usuarios
+
+Bash expandirá un solo ~ para apuntar a su directorio personal, pero también puede usarlo para apuntar a los directorios de inicio de otros usuarios. Por ejemplo, si queremos hacer referencia a un archivo llamado fredsfile.txt en el directorio personal de Fred, podríamos escribir:
+
+$ ./myprog ~fred/fredsfile.txt
+
+## Usando comandos de Linux
+
+
 
 
 
