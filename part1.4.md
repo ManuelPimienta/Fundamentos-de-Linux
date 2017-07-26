@@ -4,8 +4,11 @@
 
 Ahora, echaremos un vistazo al comando ls. Es muy probable que ya esté familiarizado con ls y sabe que al escribirlo por sí mismo se lista el contenido del directorio de trabajo actual:
 
-$ cd /usr
-$ ls
+<kbd>$ cd /usr </kbd>
+
+<kbd>$ ls </kbd>
+
+
 X11R6      doc         i686-pc-linux-gnu  lib      man          sbin   ssl
 bin        gentoo-x86  include            libexec  portage      share  tmp
 distfiles  i686-linux  info               local    portage.old  src
@@ -86,7 +89,7 @@ Como puede ver, /usr/local/bin/ tiene el mismo número de inode que /usr/local! 
 
 De hecho, podemos ver el número total de veces que el inodo 5120 se referenciado usando el comando
 
-<code>ls -dl</code>
+<kbd>ls -dl</kbd>
 
 Comando:
 
@@ -109,8 +112,8 @@ Si echamos un vistazo a la segunda columna de la izquierda, vemos que el directo
 
 Echemos un rápido vistazo al comando mkdir, que se puede utilizar para crear nuevos directorios. El siguiente ejemplo crea tres nuevos directorios, tic, tac y toe, todos bajo /tmp:
 
-$ cd /tmp
-$ mkdir tic tac toe
+<kbd>$ cd /tmp</kbd>
+<kbd>$ mkdir tic tac toe</kbd>
 
 De forma predeterminada, el comando mkdir no crea directorios principales para usted; toda la ruta desde el primer elemento hasta el último necesita existir. Por lo tanto, si desea crear los directorios ganados won/der/ful, necesitará emitir tres comandos mkdir independientes:
 
@@ -187,6 +190,8 @@ Después de escribir este comando, myfile.txt se moverá a /home/drobbins/myfile
 También podemos usar el comando mv para mover varios archivos a un único directorio de destino. Por ejemplo, para mover myfile1.txt y myarticle3.txt a /home/drobbins, podría escribir:
 
 $ mv /var/tmp/myfile1.txt /var/tmp/myarticle3.txt /home/drobbins
+
+
 
 
 
